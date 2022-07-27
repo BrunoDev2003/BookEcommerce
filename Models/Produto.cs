@@ -17,5 +17,6 @@ namespace BookEcommerceAPI.Models
         public string Categoria { get; set; }
 
         public string img { get; set; }
+        public string Img { get; internal set; }
     }
 }

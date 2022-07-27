@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookEcommerceAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -28,7 +29,7 @@ namespace BookEcommerceAPI
         public void ConfigureServices(IServiceCollection services){
             services.AddControllers();
 
-            services.AddDbContext<ToDoContext>{opt => opt.UseInMemoryDatabase(databaseName:"ToDoProducts")};
+            services.AddDbContext<ToDoContext>(opt => opt.UseInMemoryDatabase(databaseName:"ToDoProducts"));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
