@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookEcommerceAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace livrariaController
 {
@@ -24,6 +25,12 @@ namespace livrariaController
             _context.todoProducts.Add(new Produto {ID = "6", Nome = "livro6", Preco = (int)24.0, Categoria = "Ação", Img = "mg6" });
 
             _context.SaveChanges();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos() 
+        {
+            return await _context.todoProducts.ToListAsync();
         }
     }
 }
