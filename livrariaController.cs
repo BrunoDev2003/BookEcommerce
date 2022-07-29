@@ -32,5 +32,17 @@ namespace livrariaController
         {
             return await _context.todoProducts.ToListAsync();
         }
+
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Produto>>> GetItem(int id) 
+        {
+            var item = await_context.todoProducts.FindAync(id.ToString());
+
+            if(item == null) {
+                return NotFound();
+            } return item;
+            
+        }
     }
 }
