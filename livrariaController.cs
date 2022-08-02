@@ -35,13 +35,14 @@ namespace livrariaController
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Produto>>> GetItem(int id) 
+        public async Task<ActionResult<Produto>>GetItem(int id) 
         {
-            var item = await_context.todoProducts.FindAync(id.ToString());
+            var item = await _context.todoProducts.FindAsync(id.ToString());
 
             if(item == null) {
                 return NotFound();
-            } return item;
+            } 
+            return item;
             
         }
     }
