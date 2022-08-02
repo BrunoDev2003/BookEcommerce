@@ -45,5 +45,19 @@ namespace livrariaController
             return item;
             
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Produto>> PostProduto(Produto produto) 
+        {
+            _context.todoProducts.Add(produto);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProduto),new{id = produto.id}, produto);
+        }
+
+        private object GetProduto()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
